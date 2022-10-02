@@ -1,4 +1,4 @@
-import { createInstance } from "localforage";
+import localforage from "localforage";
 
 import type { CacheDriver } from "@regions-of-indonesia/client";
 
@@ -35,7 +35,7 @@ type CreateLocalForageDriverOptions = {
 function createLocalForageDriver(options: CreateLocalForageDriverOptions = {}): CacheDriver {
   const { name = "regions-of-indonesia" } = options;
 
-  const instance = createInstance({ name });
+  const instance = localforage.createInstance({ name });
 
   return {
     async get(key: string) {

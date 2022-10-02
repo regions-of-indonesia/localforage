@@ -22,6 +22,9 @@
   "repository": "https://github.com/regions-of-indonesia/localforage.git",
   "author": "flamrdevs <flamrdevs@gmail.com>",
   "license": "GPL-3.0",
+  "dependencies": {
+    "localforage": "^1.10.0"
+  },
   "devDependencies": {
     "@regions-of-indonesia/client": "^2.1.0",
     "@vitest/ui": "^0.23.2",
@@ -31,8 +34,5 @@
     "node-fetch": "^3.2.10",
     "release-it": "^15.4.2",
     "vitest": "^0.23.2"
-  },
-  "dependencies": {
-    "localforage": "^1.10.0"
   }
 }

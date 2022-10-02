@@ -1,0 +1,38 @@
+{
+  "name": "@regions-of-indonesia/localforage",
+  "version": "0.0.0",
+  "description": "localforage driver",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.modern.mjs",
+  "exports": {
+    "require": "./dist/index.js",
+    "default": "./dist/index.modern.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test-ui": "vitest --ui",
+    "build": "microbundle src/index.ts --format modern,cjs --sourcemap false",
+    "prerelease": "yarn run test && yarn run build",
+    "release": "release-it --only-version"
+  },
+  "repository": "https://github.com/regions-of-indonesia/localforage.git",
+  "author": "flamrdevs <flamrdevs@gmail.com>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@regions-of-indonesia/client": "^2.1.0",
+    "@vitest/ui": "^0.23.2",
+    "javascript-yesterday": "^1.2.0",
+    "jsdom": "^20.0.0",
+    "microbundle": "^0.15.1",
+    "node-fetch": "^3.2.10",
+    "release-it": "^15.4.2",
+    "vitest": "^0.23.2"
+  },
+  "dependencies": {
+    "localforage": "^1.10.0"
+  }
+}

@@ -1,4 +1,4 @@
-import localforage from "localforage";
+import { createInstance } from "localforage";
 
 import type { CacheDriver } from "@regions-of-indonesia/client";
 
@@ -7,43 +7,45 @@ type Item = {
   data: any;
 };
 
-const TTL = 30 * 24 * 60 * 60 * 1000;
-
-function createExpires() {
-  return new Date().getTime() + TTL;
-}
+const TTL = 7 * 24 * 60 * 60 * 1000;
 
 function isTypeofItem(value: unknown): value is Item {
   return (
     typeof value === "object" &&
     value !== null &&
     value.hasOwnProperty("expires") &&
-    typeof (value as any).expires === "number" &&
+    typeof (value as Item).expires === "number" &&
     value.hasOwnProperty("data") &&
-    typeof (value as any).data !== "undefined"
+    typeof (value as Item).data !== "undefined"
   );
 }
 
-function isLive(value: unknown) {
+function isAlive(value: unknown) {
   return isTypeofItem(value) && new Date().getTime() < value.expires;
+}
+
+function expires(ttl: number): number {
+  const n = Number(ttl);
+  return new Date().getTime() + (isNaN(n) || n < 0 ? TTL : n);
 }
 
 type CreateLocalForageDriverOptions = {
   name?: string;
+  ttl?: number;
 };
 
 function createLocalForageDriver(options: CreateLocalForageDriverOptions = {}): CacheDriver {
-  const { name = "regions-of-indonesia" } = options;
+  const { name = "regions-of-indonesia", ttl = TTL } = options;
 
-  const instance = localforage.createInstance({ name });
+  const instance = createInstance({ name });
 
   return {
     async get(key: string) {
       const item = await instance.getItem<Item>(key);
-      return (isLive(item) && item.data) || null;
+      return isAlive(item) ? item.data : null;
     },
     async set(key: string, value: any) {
-      await instance.setItem<Item>(key, { expires: createExpires(), data: value });
+      await instance.setItem<Item>(key, { expires: expires(ttl), data: value });
     },
     async delete(key: string) {
       await instance.removeItem(key);

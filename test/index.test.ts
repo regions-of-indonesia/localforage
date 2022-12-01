@@ -15,7 +15,7 @@ describe("Code", () => {
   });
 
   it("Flow", async () => {
-    const driver = createLocalForageDriver();
+    const driver = createLocalForageDriver({ ttl: 1 * 30 * 24 * 60 * 60 * 1000 });
 
     const null_item_a = await driver.get("a");
     expect(null_item_a).toBeNull();

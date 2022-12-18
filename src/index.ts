@@ -1,4 +1,4 @@
-import { createInstance } from "localforage";
+import localforage from "localforage";
 
 import type { CacheDriver } from "@regions-of-indonesia/client";
 
@@ -20,7 +20,7 @@ function isTypeofItem(value: unknown): value is Item {
   );
 }
 
-function isAlive(value: unknown) {
+function isAlive(value: unknown): value is Item {
   return isTypeofItem(value) && new Date().getTime() < value.expires;
 }
 
@@ -37,7 +37,7 @@ type CreateLocalForageDriverOptions = {
 function createLocalForageDriver(options: CreateLocalForageDriverOptions = {}): CacheDriver {
   const { name = "regions-of-indonesia", ttl = TTL } = options;
 
-  const instance = createInstance({ name });
+  const instance = localforage.createInstance({ name });
 
   return {
     async get(key: string) {

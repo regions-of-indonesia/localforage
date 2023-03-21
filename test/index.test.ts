@@ -20,10 +20,10 @@ describe("Code", () => {
     const null_item_a = await driver.get("a");
     expect(null_item_a).toBeNull();
 
-    await driver.set("a", { im: "a" });
+    await driver.set("a", { me: "a" });
 
     const item_a = await driver.get("a");
-    expect(item_a).toEqual({ im: "a" });
+    expect(item_a).toEqual({ me: "a" });
 
     await driver.delete("a");
 
@@ -33,10 +33,10 @@ describe("Code", () => {
     const null_item_b = await driver.get("b");
     expect(null_item_b).toBeNull();
 
-    await driver.set("b", { im: "b" });
+    await driver.set("b", { me: "b" });
 
     const item_b = await driver.get("b");
-    expect(item_b).toEqual({ im: "b" });
+    expect(item_b).toEqual({ me: "b" });
 
     vi.setSystemTime(new Date(new Date().getTime() + 2 * 30 * 24 * 60 * 60 * 1000));
 

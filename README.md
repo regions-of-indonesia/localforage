@@ -6,7 +6,7 @@
   <a href="https://indonesia-api.netlify.app/regions-of-indonesia"><img src="https://raw.githubusercontent.com/indonesia-api/indonesia-api/main/public/Badge.svg?sanitize=true" /></a>
 </p>
 
-<img src="https://hiiits.deta.dev/hit/regions-of-indonesia/localforage?" width="100%" heigth="10px" />
+<img src="https://hiiits.deno.dev/hit/regions-of-indonesia/localforage?" width="100%" heigth="10px" />
 
 # Regions of Indonesia LocalForage
 
@@ -20,6 +20,8 @@ Install
 npm install @regions-of-indonesia/localforage
 # or
 yarn add @regions-of-indonesia/localforage
+# or
+pnpm add @regions-of-indonesia/localforage
 ```
 
 Usage

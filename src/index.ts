@@ -9,48 +9,40 @@ type Item = {
 
 const TTL = 7 * 24 * 60 * 60 * 1000;
 
-function isTypeofItem(value: unknown): value is Item {
-  return (
+const isTypeofItem = (value: unknown): value is Item =>
     typeof value === "object" &&
     value !== null &&
-    value.hasOwnProperty("expires") &&
-    typeof (value as Item).expires === "number" &&
-    value.hasOwnProperty("data") &&
-    typeof (value as Item).data !== "undefined"
-  );
-}
-
-function isAlive(value: unknown): value is Item {
-  return isTypeofItem(value) && new Date().getTime() < value.expires;
-}
-
-function expires(ttl: number): number {
-  const n = Number(ttl);
-  return new Date().getTime() + (isNaN(n) || n < 0 ? TTL : n);
-}
+    "expires" in value &&
+    typeof value.expires === "number" &&
+    "data" in value &&
+    typeof value.data !== "undefined",
+  isAlive = (value: unknown): value is Item => isTypeofItem(value) && new Date().getTime() < value.expires,
+  expires = (ttl: number): number => {
+    const n = Number(ttl);
+    return new Date().getTime() + (isNaN(n) || n < 0 ? TTL : n);
+  };
 
 type CreateLocalForageDriverOptions = {
   name?: string;
   ttl?: number;
 };
 
-function createLocalForageDriver(options: CreateLocalForageDriverOptions = {}): CacheDriver {
-  const { name = "regions-of-indonesia", ttl = TTL } = options;
-
-  const instance = localforage.createInstance({ name });
+const createLocalForageDriver = (options: CreateLocalForageDriverOptions = {}): CacheDriver<Item["data"]> => {
+  const { name = "regions-of-indonesia", ttl = TTL } = options,
+    instance = localforage.createInstance({ name });
 
   return {
     async get(key: string) {
       const item = await instance.getItem<Item>(key);
       return isAlive(item) ? item.data : null;
     },
-    async set(key: string, value: any) {
+    async set(key: string, value: Item["data"]) {
       await instance.setItem<Item>(key, { expires: expires(ttl), data: value });
     },
     async delete(key: string) {
       await instance.removeItem(key);
     },
   };
-}
+};
 
 export { createLocalForageDriver };

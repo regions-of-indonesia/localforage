@@ -12,10 +12,10 @@ const TTL = 7 * 24 * 60 * 60 * 1000;
 const isTypeofItem = (value: unknown): value is Item =>
     typeof value === "object" &&
     value !== null &&
-    "expires" in value &&
-    typeof value.expires === "number" &&
-    "data" in value &&
-    typeof value.data !== "undefined",
+    "expires" in (value as any) &&
+    typeof (value as any).expires === "number" &&
+    "data" in (value as any) &&
+    typeof (value as any).data !== "undefined",
   isAlive = (value: unknown): value is Item => isTypeofItem(value) && new Date().getTime() < value.expires,
   expires = (ttl: number): number => {
     const n = Number(ttl);

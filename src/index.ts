@@ -22,12 +22,12 @@ const isTypeofItem = (value: unknown): value is Item =>
     return new Date().getTime() + (isNaN(n) || n < 0 ? TTL : n);
   };
 
-type CreateLocalForageDriverOptions = {
+type Options = {
   name?: string;
   ttl?: number;
 };
 
-const createLocalForageDriver = (options: CreateLocalForageDriverOptions = {}): CacheDriver<Item["data"]> => {
+const createLocalForageDriver = (options: Options = {}): CacheDriver<Item["data"]> => {
   const { name = "regions-of-indonesia", ttl = TTL } = options,
     instance = localforage.createInstance({ name });
 
@@ -45,4 +45,5 @@ const createLocalForageDriver = (options: CreateLocalForageDriverOptions = {}): 
   };
 };
 
+export type { Options };
 export { createLocalForageDriver };

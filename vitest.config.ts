@@ -4,7 +4,6 @@ export default defineConfig({
   plugins: [],
   test: {
     environment: "jsdom",
-    include: ["**/*.test.{ts,tsx}"],
-    setupFiles: "./vitest.setup.ts",
+    include: ["test/**/*.test.ts"],
   },
 });

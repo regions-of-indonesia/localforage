@@ -3,44 +3,45 @@ import localforage from "localforage";
 import type { CacheDriver } from "@regions-of-indonesia/client";
 
 type Item = {
-  expires: number;
-  data: any;
+  e: number;
+  v: any;
 };
 
+const NAME = "regions-of-indonesia";
 const TTL = 7 * 24 * 60 * 60 * 1000;
 
 const isTypeofItem = (value: unknown): value is Item =>
-    typeof value === "object" &&
-    value !== null &&
-    "expires" in (value as any) &&
-    typeof (value as any).expires === "number" &&
-    "data" in (value as any) &&
-    typeof (value as any).data !== "undefined",
-  isAlive = (value: unknown): value is Item => isTypeofItem(value) && new Date().getTime() < value.expires,
-  expires = (ttl: number): number => {
-    const n = Number(ttl);
-    return new Date().getTime() + (isNaN(n) || n < 0 ? TTL : n);
-  };
+  typeof value === "object" &&
+  value !== null &&
+  "e" in (value as any) &&
+  typeof (value as any).e === "number" &&
+  "v" in (value as any) &&
+  typeof (value as any).v !== "undefined";
+
+const isAlive = (value: unknown): value is Item => isTypeofItem(value) && new Date().getTime() < value.e;
+
+const expires = (ttl: number): number => new Date().getTime() + ttl;
 
 type Options = {
   name?: string;
   ttl?: number;
 };
 
-const createLocalForageDriver = (options: Options = {}): CacheDriver<Item["data"]> => {
-  const { name = "regions-of-indonesia", ttl = TTL } = options,
-    instance = localforage.createInstance({ name });
+const createLocalForageDriver = (options: Options = {}): CacheDriver<Item["v"]> => {
+  const { name = NAME, ttl = TTL } = options;
+  const lf = localforage.createInstance({ name });
+  const fixedTTL = isNaN(ttl) || ttl < 0 ? TTL : ttl;
 
   return {
     async get(key: string) {
-      const item = await instance.getItem<Item>(key);
-      return isAlive(item) ? item.data : null;
+      const item = await lf.getItem<Item>(key);
+      return isAlive(item) ? item.v : null;
     },
-    async set(key: string, value: Item["data"]) {
-      await instance.setItem<Item>(key, { expires: expires(ttl), data: value });
+    async set(key: string, value: Item["v"]) {
+      await lf.setItem<Item>(key, { e: expires(fixedTTL), v: value });
     },
-    async delete(key: string) {
-      await instance.removeItem(key);
+    async del(key: string) {
+      await lf.removeItem(key);
     },
   };
 };

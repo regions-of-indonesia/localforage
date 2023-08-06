@@ -1,17 +1,15 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { hasOwnProperties, isTypeofObject } from "javascript-yesterday";
-
 import { createLocalForageDriver } from "../src";
 
 describe("Code", () => {
   it("Type check", async () => {
     const driver = createLocalForageDriver();
 
-    expect(isTypeofObject(driver) && hasOwnProperties(driver, "get", "set", "delete")).toBeTruthy();
+    expect(driver).toBeTypeOf("object");
     expect(driver.get).toBeTypeOf("function");
     expect(driver.set).toBeTypeOf("function");
-    expect(driver.delete).toBeTypeOf("function");
+    expect(driver.del).toBeTypeOf("function");
   });
 
   it("Flow", async () => {
@@ -25,10 +23,10 @@ describe("Code", () => {
     const item_a = await driver.get("a");
     expect(item_a).toEqual({ me: "a" });
 
-    await driver.delete("a");
+    await driver.del("a");
 
-    const deleted_item_a = await driver.get("a");
-    expect(deleted_item_a).toBeNull();
+    const deld_item_a = await driver.get("a");
+    expect(deld_item_a).toBeNull();
 
     const null_item_b = await driver.get("b");
     expect(null_item_b).toBeNull();

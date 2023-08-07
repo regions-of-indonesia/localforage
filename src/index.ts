@@ -33,14 +33,14 @@ const createLocalForageDriver = (options: Options = {}): CacheDriver<Item["v"]> 
   const fixedTTL = isNaN(ttl) || ttl < 0 ? TTL : ttl;
 
   return {
-    async get(key: string) {
+    get: async (key: string) => {
       const item = await lf.getItem<Item>(key);
       return isAlive(item) ? item.v : null;
     },
-    async set(key: string, value: Item["v"]) {
+    set: async (key: string, value: Item["v"]) => {
       await lf.setItem<Item>(key, { e: expires(fixedTTL), v: value });
     },
-    async del(key: string) {
+    del: async (key: string) => {
       await lf.removeItem(key);
     },
   };

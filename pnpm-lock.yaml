@@ -1,17 +1,14 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  '@regions-of-indonesia/client':
-    specifier: 5.0.0-0
-    version: 5.0.0-0
-  '@regions-of-indonesia/types':
-    specifier: 1.0.0-0
-    version: 1.0.0-0
   localforage:
     specifier: ^1.10.0
     version: 1.10.0
 
 devDependencies:
+  '@regions-of-indonesia/client':
+    specifier: 5.0.0-0
+    version: 5.0.0-0
   '@vitest/ui':
     specifier: ^0.31.1
     version: 0.31.1(vitest@0.31.1)
@@ -494,11 +491,7 @@ packages:
 
   /@regions-of-indonesia/client@5.0.0-0:
     resolution: {integrity: sha512-Fy3bRpf5huh96uhalOyLgVGiXe3h43QMD3z8GVoSoi3DZp6LXNRlnfXlZCxogGu/USXK6bbWgDd651V1xeU7kg==}
-    dev: false
-
-  /@regions-of-indonesia/types@1.0.0-0:
-    resolution: {integrity: sha512-dI9giQyHm7Jv/YLAiZwlZhEHhVYBPrpVkn0DBeB4xj5qvJF4vOpDqJHfEV4pCu2Ixe2L5LjZ6nJ+fEdoseAEyQ==}
-    dev: false
+    dev: true
 
   /@rollup/pluginutils@5.0.2:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}

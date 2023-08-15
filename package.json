@@ -36,7 +36,7 @@
     "localforage": "^1.10.0"
   },
   "devDependencies": {
-    "@regions-of-indonesia/client": "5.0.1",
+    "@regions-of-indonesia/client": "5.0.2",
     "@vitest/ui": "^0.31.1",
     "jsdom": "^22.1.0",
     "release-it": "^15.10.3",

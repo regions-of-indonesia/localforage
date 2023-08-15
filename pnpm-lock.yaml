@@ -7,8 +7,8 @@ dependencies:
 
 devDependencies:
   '@regions-of-indonesia/client':
-    specifier: 5.0.0-1
-    version: 5.0.0-1
+    specifier: 5.0.1
+    version: 5.0.1
   '@vitest/ui':
     specifier: ^0.31.1
     version: 0.31.1(vitest@0.31.1)
@@ -489,8 +489,8 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@regions-of-indonesia/client@5.0.0-1:
-    resolution: {integrity: sha512-MVaZqVcEaX4NOP5f63ncqA8qojmtoSbHWf6iZnnVexonlBXxPNQ7aXGBxF7K0LSi7eSdlvaQA7ADhSRrjGt70Q==}
+  /@regions-of-indonesia/client@5.0.1:
+    resolution: {integrity: sha512-veK2VV41fl4LNocDKl3vIa1koe9/gq8+W1UdntHpLwVQ5QQrRM+Sv5aFvNRBRIU4bh72dIvpNya7lbaOwmiI7A==}
     dev: true
 
   /@rollup/pluginutils@5.0.2:

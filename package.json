@@ -33,7 +33,8 @@
     "release": "pnpm test && pnpm build && release-it"
   },
   "peerDependencies": {
-    "localforage": "^1.10.0"
+    "localforage": "^1.10.0",
+    "@regions-of-indonesia/client": "5.2.0"
   },
   "devDependencies": {
     "@regions-of-indonesia/client": "5.2.0",

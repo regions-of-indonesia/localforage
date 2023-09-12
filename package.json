@@ -36,12 +36,12 @@
     "localforage": "^1.10.0"
   },
   "devDependencies": {
-    "@regions-of-indonesia/client": "5.0.2",
-    "@vitest/ui": "^0.31.1",
+    "@regions-of-indonesia/client": "5.2.0",
+    "@vitest/ui": "^0.34.4",
     "jsdom": "^22.1.0",
-    "release-it": "^15.10.3",
-    "vite": "^4.3.9",
-    "vite-plugin-dts": "^2.3.0",
-    "vitest": "^0.31.1"
+    "release-it": "^16.1.5",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.5.3",
+    "vitest": "^0.34.4"
   }
 }

@@ -1,6 +1,10 @@
 {
   "name": "@regions-of-indonesia/localforage",
   "version": "5.1.0",
+  "description": "Regions of Indonesia localforage driver",
+  "keywords": [
+    "regions-of-indonesia"
+  ],
   "type": "module",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",

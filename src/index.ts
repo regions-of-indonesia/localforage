@@ -27,6 +27,11 @@ type Options = {
   ttl?: number;
 };
 
+/**
+ *
+ * @param options create options
+ * @returns cache driver
+ */
 const createLocalForageDriver = (options: Options = {}): CacheDriver<Item["v"]> => {
   const { name = NAME, ttl = TTL } = options;
   const lf = localforage.createInstance({ name });

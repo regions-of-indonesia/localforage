@@ -7,8 +7,8 @@ dependencies:
 
 devDependencies:
   '@regions-of-indonesia/client':
-    specifier: 5.2.0
-    version: 5.2.0
+    specifier: 5.2.1
+    version: 5.2.1
   '@vitest/ui':
     specifier: ^0.34.4
     version: 0.34.4(vitest@0.34.4)
@@ -505,14 +505,14 @@ packages:
     resolution: {integrity: sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==}
     dev: true
 
-  /@regions-of-indonesia/client@5.2.0:
-    resolution: {integrity: sha512-OvOWTGKuRzpUIYZL3Qq9+Dw3cYMzpU0D/SCOnyALFLJk/D4z/K5ST/Q00eoHfkJRyQBYFUsLUpuVWV4OLcyZjA==}
+  /@regions-of-indonesia/client@5.2.1:
+    resolution: {integrity: sha512-kJ1KnFv+dPD4aQziIUcyHGHSUvQvtaQelhycdJB5/gguG7oQpPTFzMK1wZDrbgycTsoAJzJ1gUOtXhE3E9b3ew==}
     dependencies:
-      '@regions-of-indonesia/types': 5.1.0
+      '@regions-of-indonesia/types': 5.1.1
     dev: true
 
-  /@regions-of-indonesia/types@5.1.0:
-    resolution: {integrity: sha512-CcpxM0//cxzY7IhDvHZ0N//gUQ2qIhCEkpV/y85Ml/TwLedJNwYI6ATlAsnJ287Nhx3h0cXcah9NOmZxL30lxA==}
+  /@regions-of-indonesia/types@5.1.1:
+    resolution: {integrity: sha512-uSd6ZHkE1Do9w49aaZaeNSrcj8Kb6DmStbceMzzrSuAX6zHLRQmAAwxym6+OLulwVv3ZCqUb7TyKwfmlb/j5Nw==}
     dev: true
 
   /@rollup/pluginutils@5.0.4:
